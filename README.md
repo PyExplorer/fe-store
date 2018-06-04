@@ -1,2 +1,2 @@
-# fe-store
-E-stare with Flask
+# fe_store
+E-store with Flask

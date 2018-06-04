@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="row mb-1">
+        <a href="/">На главную</a>
+    </div>
+    {% for product in products %}
+
+        <div class="row">
+            <div class="col-md-9">
+              <div class="card flex-md-row mb-2 box-shadow h-md-200">
+                <img class="card-img-left flex-auto d-none d-lg-block" data-src="holder.js/150x200?theme=thumb" alt="Thumbnail [150x200]" style="width: 150px; height: 200px;" src={{product.image}} data-holder-rendered="true">
+
+                <div class="card-body d-flex flex-column align-items-start">
+                    <h4 class="d-inline-block mb-2 text-primary">
+                        <a href="products/{{product.id}}" title="{{product.name}}">
+                            <h4>{{product.name}}</h4>
+                        </a>
+                    </h4>
+                    <div class="mb-1 text-muted">Тип: {{product.product_type.name}}</div>
+
+                   <p class="card-text mb-auto">
+                    <ul>
+                        {% for association in product.attributes %}
+                        <li> {{association.attribute.name}}: {{association.value.name}} {{association.attribute.measure.name}}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+              </div>
+            </div>
+
+        </div>
+
+    {% endfor %}
+{% endblock %}
